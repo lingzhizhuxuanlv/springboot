@@ -1,1 +1,1 @@
-springboot+logback+swaggerAPI接口模板
+springboot+logback+swagger服务接口模板
