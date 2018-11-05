@@ -31,17 +31,50 @@ public class UploadController {
      */
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
-    public Object upload(MultipartFile file, HttpServletRequest request) {
+    public Object upload(List<MultipartFile> files, HttpServletRequest request) {
         try {
-            //获取原始文件名
-            String originalFilename = file.getOriginalFilename();
-            //获取处理后的新文件名
-            String newFilename = reFileName(originalFilename);
-            //保存文件
-            String path = saveFiles(file, newFilename);
-            return Result.buildOK("保存成功",getBaseUrl(request) + path);
+            List<String> urls = new ArrayList<>();
+            for(MultipartFile file:files){
+                //获取原始文件名
+                String originalFilename = file.getOriginalFilename();
+                //获取处理后的新文件名
+                String newFilename = reFileName(originalFilename);
+                //保存文件
+                String path = saveFiles(file, newFilename);
+                urls.add(getBaseUrl(request) + path);
+            }
+            return Result.buildOK("保存成功",urls);
         } catch (Exception e) {
             return Result.buildERROR("保存失败");
+        }
+    }
+
+    /**
+     * 富文本文件上传控制器
+     */
+    @RequestMapping(value = "/upload/editor", method = RequestMethod.POST)
+    @ResponseBody
+    public Object uploadEditor(List<MultipartFile> files, HttpServletRequest request) {
+        try {
+            List<String> urls = new ArrayList<>();
+            for(MultipartFile file:files){
+                //获取原始文件名
+                String originalFilename = file.getOriginalFilename();
+                //获取处理后的新文件名
+                String newFilename = reFileName(originalFilename);
+                //保存文件
+                String path = saveFiles(file, newFilename);
+                urls.add(getBaseUrl(request) + path);
+            }
+            Map<String,Object> map = new HashMap<>();
+            map.put("errno",0);
+            map.put("data",urls);
+            return map;
+        } catch (Exception e) {
+            Map<String,Object> map = new HashMap<>();
+            map.put("errno",500);
+            map.put("data",null);
+            return map;
         }
     }
 
