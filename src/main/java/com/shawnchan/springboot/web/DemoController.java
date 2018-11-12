@@ -11,4 +11,9 @@ public class DemoController {
         return "demo";
     }
 
+    @RequestMapping("/index")
+    private String toIndex(){
+        return "index";
+    }
+
 }
