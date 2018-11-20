@@ -40,7 +40,8 @@ public class UserController {
         try{
             User user =  userService.selectByPrimaryKey(2);
             redisTemplate.opsForValue().set("2",user.getName());
-            return Result.buildOK("获取成功",redisTemplate.opsForValue().get("2"));
+            String name = (String)redisTemplate.opsForValue().get("2");
+            return Result.buildOK("获取成功",name);
         }catch(Exception e){
             return Result.buildERROR("获取失败");
         }
