@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="shortcut icon" href="favicon.ico"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>开始使用layui</title>
     <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body>
-
 <form class="layui-form" action="${base}/aaa" method="post">
     <div class="layui-form-item">
         <label class="layui-form-label">输入框</label>

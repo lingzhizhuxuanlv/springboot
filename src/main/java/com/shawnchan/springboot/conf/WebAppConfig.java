@@ -9,6 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
@@ -35,7 +36,7 @@ public class WebAppConfig implements WebMvcConfigurer {
         String download = env.getProperty("download");
         //设置下载路径映射
         registry.addResourceHandler(download + "/**")
-                .addResourceLocations("file:"+realPath+"/");
+                .addResourceLocations("file:" + realPath + "/");
     }
 
     /**
@@ -44,12 +45,15 @@ public class WebAppConfig implements WebMvcConfigurer {
     @Bean
     public FreeMarkerViewResolver freeMarkerViewResolver() {
         //templates为根目录，配置视图解析
-        //"/WEB-INF/"   ".html"
-        FreeMarkerViewResolver freeMarkerViewResolver = new FreeMarkerViewResolver("", ".ftl");
-        //配置默认插值
+        FreeMarkerViewResolver freeMarkerViewResolver = new FreeMarkerViewResolver();
+        //配置视图类
         freeMarkerViewResolver.setViewClass(MyFreeMarkerView.class);
-        //开启缓存
-        freeMarkerViewResolver.setCache(true);
+        //关闭缓存
+        freeMarkerViewResolver.setCache(false);
+        //设置前缀
+        freeMarkerViewResolver.setPrefix("");
+        //设置后缀
+        freeMarkerViewResolver.setSuffix(".ftl");
         //配置内容类型
         freeMarkerViewResolver.setContentType("text/html;charset=UTF-8");
         return freeMarkerViewResolver;
@@ -70,6 +74,14 @@ public class WebAppConfig implements WebMvcConfigurer {
         redisTemplate.setHashKeySerializer(stringRedisSerializer);
         redisTemplate.setHashValueSerializer(jdkSerializationRedisSerializer);
         return redisTemplate;
+    }
+
+    /**
+     * 设置默认跳转页
+     */
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addRedirectViewController("/","/demo");
     }
 
 }

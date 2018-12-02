@@ -8,7 +8,7 @@ import java.util.Map;
 public class MyFreeMarkerView extends FreeMarkerView {
 
     @Override
-    protected void exposeHelpers(Map<String, Object> model, HttpServletRequest request) throws Exception {
+    protected void exposeHelpers(Map<String, Object> model,HttpServletRequest request) throws Exception {
         StringBuilder basePath = new StringBuilder();
         basePath.append(request.getScheme()).append("://");
         basePath.append(request.getServerName());
