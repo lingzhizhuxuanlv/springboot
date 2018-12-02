@@ -1,1 +1,1 @@
-springboot+logback+swagger接口模板
+springboot+layui+swagger Web/API整合模板
