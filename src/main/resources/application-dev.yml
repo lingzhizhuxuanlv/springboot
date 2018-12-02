@@ -34,9 +34,7 @@ spring:
       datetime_format: yyyy-MM-dd HH:mm:ss
       number_format: 0.##
       template_exception_handler: ignore
-  mvc:
-    favicon:
-      enabled: false
+
 #上传路径
 upload:
   w-upload: C:/upload
