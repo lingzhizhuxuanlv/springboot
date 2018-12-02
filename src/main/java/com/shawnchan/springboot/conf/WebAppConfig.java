@@ -14,7 +14,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
-import javax.annotation.Resource;
 
 @Configuration
 public class WebAppConfig implements WebMvcConfigurer {
