@@ -113,7 +113,7 @@ public class UploadController {
         StringBuilder basePath = new StringBuilder();
         basePath.append(request.getScheme()).append("://");
         basePath.append(request.getServerName());
-        //默认端口过滤端口号
+        //过滤默认端口号
         if (request.getServerPort() != 80 && request.getServerPort() != 443) {
             basePath.append(":").append(request.getServerPort());
         }
