@@ -37,12 +37,12 @@ spring:
       number_format: 0.##
       template_exception_handler: ignore
 
-#上传路径
+#upload
 upload:
   w-upload: C:/upload
   l-upload: /home/upload
 
-#下载路径
+#download
 download: /file
 
 #mybatis
@@ -52,4 +52,6 @@ mybatis:
 
 #logback
 logging:
-  path:  C:/logging
+  path: C:/logs
+  level:
+    com.lingzhizhuxuanlv.springboot.dao: debug

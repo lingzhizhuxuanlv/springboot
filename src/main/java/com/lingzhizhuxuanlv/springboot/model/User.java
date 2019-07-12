@@ -1,4 +1,4 @@
-package com.shawnchan.springboot.model;
+package com.lingzhizhuxuanlv.springboot.model;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.shawnchan.springboot.conf;
+package com.lingzhizhuxuanlv.springboot.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ public class Swagger2 {
                 .apiInfo(apiInfo())
                 .select()
                 //扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.shawnchan.springboot.api"))
+                .apis(RequestHandlerSelectors.basePackage("com.lingzhizhuxuanlv.springboot.api"))
                 .paths(PathSelectors.any())
                 .build();
     }

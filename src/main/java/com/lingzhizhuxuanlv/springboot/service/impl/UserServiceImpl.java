@@ -1,8 +1,8 @@
-package com.shawnchan.springboot.service.impl;
+package com.lingzhizhuxuanlv.springboot.service.impl;
 
-import com.shawnchan.springboot.dao.UserMapper;
-import com.shawnchan.springboot.model.User;
-import com.shawnchan.springboot.service.UserService;
+import com.lingzhizhuxuanlv.springboot.dao.UserMapper;
+import com.lingzhizhuxuanlv.springboot.model.User;
+import com.lingzhizhuxuanlv.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

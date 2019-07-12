@@ -1,6 +1,6 @@
-package com.shawnchan.springboot.api;
+package com.lingzhizhuxuanlv.springboot.api.mini;
 
-import com.shawnchan.springboot.model.Result;
+import com.lingzhizhuxuanlv.springboot.model.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -15,8 +15,8 @@ import java.util.List;
 
 @Api(value = "小程序信息接口",tags = "小程序信息接口")
 @RestController
-@RequestMapping("/api")
-public class InfoApi {
+@RequestMapping("/mini")
+public class InfoMini {
 
     @ApiOperation(value = "小程序信息列表")
     @RequestMapping(value = "/info/list" ,method = RequestMethod.GET)

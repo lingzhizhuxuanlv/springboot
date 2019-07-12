@@ -1,4 +1,4 @@
-package com.shawnchan.springboot.aop;
+package com.lingzhizhuxuanlv.springboot.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class LogAspect {
 
-    @Pointcut("execution(* com.shawnchan.springboot.web..*.*(..))")
+    @Pointcut("execution(* com.lingzhizhuxuanlv.springboot.web..*.*(..))")
     private void webAspect(){}
 
     //运行前

@@ -1,12 +1,9 @@
-package com.shawnchan.springboot.dao;
+package com.lingzhizhuxuanlv.springboot.service;
 
-import com.shawnchan.springboot.model.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
+import com.lingzhizhuxuanlv.springboot.model.User;
 
-@Mapper
-@Repository
-public interface UserMapper {
+public interface UserService {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
@@ -18,4 +15,5 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
 }

@@ -1,4 +1,4 @@
-package com.shawnchan.springboot.conf;
+package com.lingzhizhuxuanlv.springboot.conf;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

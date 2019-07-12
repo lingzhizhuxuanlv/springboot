@@ -1,4 +1,4 @@
-package com.shawnchan.springboot.conf;
+package com.lingzhizhuxuanlv.springboot.conf;
 
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 

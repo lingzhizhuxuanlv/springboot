@@ -1,4 +1,4 @@
-package com.shawnchan.springboot.conf;
+package com.lingzhizhuxuanlv.springboot.conf;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,10 +8,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
@@ -91,7 +88,35 @@ public class WebAppConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/index","/demo","/layui/**");
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns("/index")
+                .excludePathPatterns("/demo")
+                .excludePathPatterns("/layui/**")
+                .excludePathPatterns("/swagger-ui.html")
+                .excludePathPatterns("/swagger-resources/**")
+                .excludePathPatterns("/v2/**")
+                .excludePathPatterns("/webjars/**")
+                .excludePathPatterns("/mini/**")
+                .excludePathPatterns("/app/**");
+    }
+
+    /**
+     * 配置跨域
+     */
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        //设置允许跨域的路径
+        registry.addMapping("/**")
+                //设置允许跨域请求的域名
+                .allowedOrigins("*")
+                //是否允许客户端发送cookie信息
+                .allowCredentials(true)
+                //放行哪些原始域(请求方式)
+                .allowedMethods("*")
+                //放行哪些原始域(头部信息)
+                .allowedHeaders("*")
+                //跨域允许时间
+                .maxAge(1800);
     }
 
 }

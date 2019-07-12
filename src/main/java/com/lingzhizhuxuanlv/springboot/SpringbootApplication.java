@@ -1,4 +1,4 @@
-package com.shawnchan.springboot;
+package com.lingzhizhuxuanlv.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

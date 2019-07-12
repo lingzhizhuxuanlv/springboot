@@ -1,6 +1,6 @@
-package com.shawnchan.springboot.web;
+package com.lingzhizhuxuanlv.springboot.web;
 
-import com.shawnchan.springboot.model.Result;
+import com.lingzhizhuxuanlv.springboot.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;

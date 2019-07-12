@@ -1,9 +1,9 @@
-package com.shawnchan.springboot.web;
+package com.lingzhizhuxuanlv.springboot.web;
 
-import com.shawnchan.springboot.aop.WebLog;
-import com.shawnchan.springboot.model.Result;
-import com.shawnchan.springboot.model.User;
-import com.shawnchan.springboot.service.UserService;
+import com.lingzhizhuxuanlv.springboot.aop.WebLog;
+import com.lingzhizhuxuanlv.springboot.model.Result;
+import com.lingzhizhuxuanlv.springboot.model.User;
+import com.lingzhizhuxuanlv.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
