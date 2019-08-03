@@ -9,7 +9,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
 public class WebAppConfig implements WebMvcConfigurer {
@@ -35,26 +34,6 @@ public class WebAppConfig implements WebMvcConfigurer {
         //设置下载路径映射
         registry.addResourceHandler(download + "/**")
                 .addResourceLocations("file:" + realPath + "/");
-    }
-
-    /**
-     * freemarker视图解析
-     */
-    @Bean
-    public FreeMarkerViewResolver freeMarkerViewResolver() {
-        //templates为根目录，配置视图解析
-        FreeMarkerViewResolver freeMarkerViewResolver = new FreeMarkerViewResolver();
-        //配置视图类
-        freeMarkerViewResolver.setViewClass(MyFreeMarkerView.class);
-        //关闭缓存
-        freeMarkerViewResolver.setCache(false);
-        //设置前缀
-        freeMarkerViewResolver.setPrefix("");
-        //设置后缀
-        freeMarkerViewResolver.setSuffix(".ftl");
-        //配置内容类型
-        freeMarkerViewResolver.setContentType("text/html;charset=UTF-8");
-        return freeMarkerViewResolver;
     }
 
     /**
@@ -89,15 +68,14 @@ public class WebAppConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/index")
-                .excludePathPatterns("/demo")
-                .excludePathPatterns("/layui/**")
+                .excludePathPatterns("/web/admin/login")
+                .excludePathPatterns("/app/admin/login")
                 .excludePathPatterns("/swagger-ui.html")
                 .excludePathPatterns("/swagger-resources/**")
                 .excludePathPatterns("/v2/**")
                 .excludePathPatterns("/webjars/**")
-                .excludePathPatterns("/mini/**")
-                .excludePathPatterns("/app/**");
+                .excludePathPatterns("/file/**")
+                .excludePathPatterns("/mini/**");
     }
 
     /**

@@ -37,7 +37,7 @@ public class Swagger2 {
                 //版本号
                 .version("1.0")
                 //描述
-                .description("小程序接口")
+                .description("接口文档")
                 .build();
     }
 

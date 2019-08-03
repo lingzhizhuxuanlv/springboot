@@ -21,8 +21,8 @@ public class InfoMini {
     @ApiOperation(value = "小程序信息列表")
     @RequestMapping(value = "/info/list" ,method = RequestMethod.GET)
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id",value = "小程序id",paramType = "query",dataType = "int", required = true),
-            @ApiImplicitParam(name = "info",value = "小程序信息",paramType = "query",dataType = "string", required = true)
+            @ApiImplicitParam(name = "id",value = "id",paramType = "query",dataType = "int", required = true),
+            @ApiImplicitParam(name = "info",value = "信息",paramType = "query",dataType = "string", required = true)
     })
     public Object columnList(Integer id, String info , HttpServletRequest request){
         try{

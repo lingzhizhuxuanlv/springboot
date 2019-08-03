@@ -1,1 +1,1 @@
-springboot+layui+swagger Web/API整合模板
+springboot+swagger2 服务模板

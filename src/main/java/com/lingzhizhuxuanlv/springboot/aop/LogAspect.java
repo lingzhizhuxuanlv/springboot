@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class LogAspect {
 
-    @Pointcut("execution(* com.lingzhizhuxuanlv.springboot.web..*.*(..))")
+    @Pointcut("execution(* com.lingzhizhuxuanlv.springboot.api..*.*(..))")
     private void webAspect(){}
 
     //运行前

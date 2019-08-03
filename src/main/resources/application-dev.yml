@@ -29,6 +29,7 @@ spring:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
   freemarker:
+    check-template-location: false
     settings:
       locale: zh_CN
       date_format: yyyy-MM-dd
@@ -36,14 +37,6 @@ spring:
       datetime_format: yyyy-MM-dd HH:mm:ss
       number_format: 0.##
       template_exception_handler: ignore
-
-#upload
-upload:
-  w-upload: C:/upload
-  l-upload: /home/upload
-
-#download
-download: /file
 
 #mybatis
 mybatis:
@@ -55,3 +48,23 @@ logging:
   path: C:/logs
   level:
     com.lingzhizhuxuanlv.springboot.dao: debug
+
+#upload
+upload:
+  w-upload: C:/upload
+  l-upload: /home/upload
+
+#download
+download: /file
+
+#jwt
+jwt:
+  secret: YWxsYSIsImV4cCI6MT
+  expired_time: 900000
+  subject: tokenCheck
+  issuer: springboot
+
+#wechat
+wechat:
+  app_id: wxfc5733e5e843b64a
+  app_secret: 997ad00fb6e031e621fa3bd75a289850

@@ -21,10 +21,11 @@ public class InfoApp {
     @ApiOperation(value = "APP信息列表")
     @RequestMapping(value = "/info/list" ,method = RequestMethod.GET)
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id",value = "小程序id",paramType = "query",dataType = "int", required = true),
-            @ApiImplicitParam(name = "info",value = "小程序信息",paramType = "query",dataType = "string", required = true)
+            @ApiImplicitParam(name = "id",value = "id",paramType = "query",dataType = "int", required = true),
+            @ApiImplicitParam(name = "info",value = "信息",paramType = "query",dataType = "string", required = true),
+            @ApiImplicitParam(name = "token", value = "权限凭证", dataType = "string", paramType = "header")
     })
-    public Object columnList(Integer id, String info , HttpServletRequest request){
+    public Object list(Integer id, String info , HttpServletRequest request){
         try{
             List<Object> list = new ArrayList<>();
             list.add(id);
