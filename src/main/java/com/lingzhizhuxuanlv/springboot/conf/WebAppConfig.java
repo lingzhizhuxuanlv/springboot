@@ -1,5 +1,6 @@
 package com.lingzhizhuxuanlv.springboot.conf;
 
+import com.lingzhizhuxuanlv.springboot.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -95,6 +96,19 @@ public class WebAppConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 //跨域允许时间
                 .maxAge(1800);
+    }
+
+    /**
+     * 配置jwt
+     */
+    @Bean
+    public JwtUtil jwtUtil(){
+        JwtUtil jwtUtil = new JwtUtil();
+        jwtUtil.setSecret(env.getProperty("jwt.secret"));
+        jwtUtil.setExpiredTime(env.getProperty("jwt.expired_time"));
+        jwtUtil.setSubject(env.getProperty("jwt.subject"));
+        jwtUtil.setIssuer(env.getProperty("jwt.issuer"));
+        return jwtUtil;
     }
 
 }

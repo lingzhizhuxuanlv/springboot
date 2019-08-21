@@ -16,9 +16,7 @@ public class LoginWeb {
     @ApiOperation("登录接口")
     @PostMapping("/admin/login")
     public Object login(String loginName, String password){
-
         return Result.buildOK("登录成功", JwtUtil.createJwt(1L,loginName));
-
     }
 
 }

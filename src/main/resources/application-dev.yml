@@ -24,10 +24,10 @@ spring:
         max-wait: -1ms
         min-idle: 0
   datasource:
-    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   freemarker:
     check-template-location: false
     settings:
@@ -59,7 +59,7 @@ download: /file
 
 #jwt
 jwt:
-  secret: YWxsYSIsImV4cCI6MT
+  secret: yJzdWIiOiJ0b2tlbkNoZWNrIiwiaXNzIjoic3ByaW5nYm9vd
   expired_time: 900000
   subject: tokenCheck
   issuer: springboot

@@ -1,9 +1,8 @@
 package com.lingzhizhuxuanlv.springboot.util;
 
-import com.lingzhizhuxuanlv.springboot.conf.ConfigConstant;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
@@ -12,34 +11,57 @@ import java.util.Date;
 
 public class JwtUtil {
 
+    private static String secret;
+    private static Long expiredTime;
+    private static String subject;
+    private static String issuer;
+
+    public void setSecret(String sec) {
+        secret = sec;
+    }
+    public void setExpiredTime(String exp) {
+        expiredTime = Long.valueOf(exp);
+    }
+    public void setSubject(String sub) {
+        subject = sub;
+    }
+    public void setIssuer(String iss) {
+        issuer = iss;
+    }
+
     public static String createJwt(Long userId, String username){
         Date now = new Date(System.currentTimeMillis());
-        Date exp = new Date(System.currentTimeMillis() + ConfigConstant.jwtExpiredTime);
+        Date exp = new Date(System.currentTimeMillis() + expiredTime);
         return Jwts.builder()
+                //压缩算法
+                .compressWith(CompressionCodecs.DEFLATE)
+                //主题名称
+                .setSubject(subject)
                 //签发者
-                .setIssuer(ConfigConstant.jwtIssuer)
+                .setIssuer(issuer)
                 //授予者
                 .setAudience(username)
-                //主题名称
-                .setSubject(ConfigConstant.jwtSubject)
-                //ID
-                .setId(userId.toString())
-                //开始时间
+                //发行时间
                 .setIssuedAt(now)
-                //结束时间
+                //生效时间
+                .setNotBefore(now)
+                //到期时间
                 .setExpiration(exp)
-                //附加参数
+                //自定义声明
                 .claim("userId", userId)
-                .claim("username", username)
-                //加密方法
-                .signWith(SignatureAlgorithm.HS256, generalKey())
+                //加密算法
+                .signWith(generalKey())
                 .compact();
     }
 
     public static Claims verifyJwt(String token){
+        //通常最长三分钟
+        long seconds = 3 * 60;
         Claims claims;
         try {
             claims = Jwts.parser()
+                    //时间偏差兼容
+                    .setAllowedClockSkewSeconds(seconds)
                     .setSigningKey(generalKey())
                     .parseClaimsJws(token)
                     .getBody();
@@ -50,8 +72,8 @@ public class JwtUtil {
     }
 
     private static Key generalKey() {
-        byte[] jwtSecretBytes = Base64.getDecoder().decode(ConfigConstant.jwtSecret);
-        return new SecretKeySpec(jwtSecretBytes, "HS256");
+        byte[] jwtSecretBytes = Base64.getDecoder().decode(secret);
+        return new SecretKeySpec(jwtSecretBytes, "HmacSHA256");
     }
 
 }
