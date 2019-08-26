@@ -8,6 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
+import java.util.UUID;
 
 public class JwtUtil {
 
@@ -47,6 +48,8 @@ public class JwtUtil {
                 .setNotBefore(now)
                 //到期时间
                 .setExpiration(exp)
+                //ID
+                .setId(UUID.randomUUID().toString())
                 //自定义声明
                 .claim("userId", userId)
                 //加密算法
