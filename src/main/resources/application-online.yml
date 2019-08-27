@@ -48,6 +48,7 @@ logging:
   path: C:/logs
   level:
     com.lingzhizhuxuanlv.springboot.dao: debug
+    io.swagger.models.parameters.AbstractSerializableParameter: error
 
 #upload
 upload:
