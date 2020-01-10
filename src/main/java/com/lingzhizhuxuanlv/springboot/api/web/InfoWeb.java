@@ -1,4 +1,4 @@
-package com.lingzhizhuxuanlv.springboot.api.mini;
+package com.lingzhizhuxuanlv.springboot.api.web;
 
 import com.lingzhizhuxuanlv.springboot.model.Result;
 import io.swagger.annotations.Api;
@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-@Api(value = "小程序信息接口",tags = "小程序信息接口")
+@Api(value = "WEB信息接口",tags = "WEB信息接口")
 @RestController
-@RequestMapping("/mini")
-public class InfoMini {
+@RequestMapping("/web")
+public class InfoWeb {
 
-    @ApiOperation(value = "小程序信息列表")
+    @ApiOperation(value = "WEB信息列表")
     @RequestMapping(value = "/info/list" ,method = RequestMethod.GET)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id",value = "id",paramType = "query",dataType = "int", required = true),
-            @ApiImplicitParam(name = "info",value = "信息",paramType = "query",dataType = "string", required = true)
+            @ApiImplicitParam(name = "info",value = "信息",paramType = "query",dataType = "string", required = true),
     })
-    public Object columnList(Integer id, String info){
+    public Object list(Integer id, String info){
         List<Object> list = new ArrayList<>();
         list.add(id);
         list.add(info);

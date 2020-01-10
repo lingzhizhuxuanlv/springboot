@@ -32,7 +32,7 @@ public class LogAspect {
             System.out.println("WILL_RUN : " + webLog.methodName());
         }
         // 可操作的内容
-        System.out.println("URL : " + request.getRequestURL().toString());
+        System.out.println("URL : " + request.getRequestURL());
         System.out.println("REQUEST_METHOD : " + request.getMethod());
         System.out.println("IP : " + request.getRemoteAddr());
         System.out.println("CLASS_ENTITY : " + entityName);

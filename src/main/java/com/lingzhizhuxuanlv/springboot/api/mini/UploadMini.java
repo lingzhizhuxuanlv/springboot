@@ -1,12 +1,12 @@
-package com.lingzhizhuxuanlv.springboot.api.web;
+package com.lingzhizhuxuanlv.springboot.api.mini;
 
 import com.lingzhizhuxuanlv.springboot.model.Result;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -16,10 +16,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Api(value = "后台文件接口",tags = "后台文件接口")
+@Api(value = "小程序文件接口",tags = "小程序文件接口")
 @RestController
-@RequestMapping("/web")
-public class UploadWeb {
+@RequestMapping("/mini")
+public class UploadMini {
 
     @Autowired
     private Environment env;
@@ -28,9 +28,6 @@ public class UploadWeb {
      * 文件上传控制器
      */
     @PostMapping("/upload/file")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "token", value = "权限凭证", dataType = "string", paramType = "header")
-    })
     public Object upload(HttpServletRequest request) {
         try {
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;

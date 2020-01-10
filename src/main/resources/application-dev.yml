@@ -5,6 +5,11 @@ server:
     context-path: /springboot
     session:
       timeout: 1800s
+  max-http-header-size: 1000KB
+  tomcat:
+    max-threads: 500
+    max-connections: 10000
+    max-http-post-size: -1
 
 #spring
 spring:
@@ -43,10 +48,11 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.lingzhizhuxuanlv.springboot.model
 
-#logback
+#logback trace<debug<info<warn<error<fatal
 logging:
-  path: C:/logs
+  file: C:/logs/springboot/dev.log
   level:
+    root: info
     com.lingzhizhuxuanlv.springboot.dao: debug
     io.swagger.models.parameters.AbstractSerializableParameter: error
 

@@ -12,11 +12,11 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.Objects;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+public class AppInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler) throws Exception {
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>preHandle");
+//        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>preHandle");
         if(request.getMethod().equals("OPTIONS")){
             return true;
         }
@@ -43,17 +43,18 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         result.put("data","");
         out = response.getWriter();
         out.append(result.toString());
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>AppInterceptor:"+request.getRequestURL());
         return false;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response,Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>postHandle");
+//        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>postHandle");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response,Object handler, Exception ex) throws Exception {
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>afterCompletion");
+//        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>afterCompletion");
     }
 
 }

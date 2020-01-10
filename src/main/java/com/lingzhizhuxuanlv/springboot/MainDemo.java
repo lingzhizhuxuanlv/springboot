@@ -1,6 +1,8 @@
 package com.lingzhizhuxuanlv.springboot;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.http.HttpRequest;
+import com.lingzhizhuxuanlv.springboot.model.Admin;
 
 import java.io.File;
 
@@ -14,10 +16,10 @@ public class MainDemo {
 //                .execute()
 //                .body());
 
-        System.out.println(HttpRequest.get("http://localhost:8080/springboot/web/test/mysql")
-                .header("token","eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eJxVzTsOwjAQBNC7bB0XuxB_0lJxjNheg4nkRLEtRULcnU1BQftGM_OG2j1M0NaFy-3JYYEBcq1Cddtzefh1bUJzj0J4hnODCUetjbXa6AGKT__Ax_YDN57walnK5GOIxEklDEldibxyDkldIqM2yRITy36vvN_lDD9fxCErdQ.r65V8l9I4GnyNHMlTTWiRlltugtripCJzssSAYWDUdY")
-                .execute()
-                .body());
+//        System.out.println(HttpRequest.get("http://localhost:8080/springboot/web/test/mysql")
+//                .header("token","eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eJxVzTsOwjAQBNC7bB0XuxB_0lJxjNheg4nkRLEtRULcnU1BQftGM_OG2j1M0NaFy-3JYYEBcq1Cddtzefh1bUJzj0J4hnODCUetjbXa6AGKT__Ax_YDN57walnK5GOIxEklDEldibxyDkldIqM2yRITy36vvN_lDD9fxCErdQ.r65V8l9I4GnyNHMlTTWiRlltugtripCJzssSAYWDUdY")
+//                .execute()
+//                .body());
 
 //        File file  = new File("C:\\Users\\lenovo\\Downloads\\ArcSoft_ArcFace_Java_Windows_x64_V2.2\\1.jpg");
 //        System.out.println(HttpRequest.post("http://localhost:8080/springboot/web/upload/file")
@@ -25,6 +27,13 @@ public class MainDemo {
 //                .form("file",file)
 //                .execute()
 //                .body());
+
+        Admin admin = new Admin();
+        admin.setId(1L);
+        admin.setName("张三");
+        admin.setPassword("123456");
+        System.out.println(HttpRequest.get("http://localhost:8080/springboot/admin/update").form(BeanUtil.beanToMap(admin)).execute().body());
+
     }
 
 }

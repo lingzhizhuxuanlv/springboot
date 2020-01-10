@@ -63,20 +63,23 @@ public class WebAppConfig implements WebMvcConfigurer {
     }
 
     /**
-     *
      * 配置拦截器
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/web/admin/login")
-                .excludePathPatterns("/app/admin/login")
-                .excludePathPatterns("/swagger-ui.html")
+        registry.addInterceptor(new AppInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns("/")
+                .excludePathPatterns("/swagger-ui.html/**")
                 .excludePathPatterns("/swagger-resources/**")
-                .excludePathPatterns("/v2/**")
                 .excludePathPatterns("/webjars/**")
-                .excludePathPatterns("/file/**")
-                .excludePathPatterns("/mini/**");
+                .excludePathPatterns("/v2/**")
+                .excludePathPatterns("/index")
+                .excludePathPatterns("/error")
+                .excludePathPatterns("/csrf")
+                .excludePathPatterns("/app/admin/login")
+                .excludePathPatterns("/mini/**")
+                .excludePathPatterns("/web/**")
+                .excludePathPatterns("/file/**");
     }
 
     /**
