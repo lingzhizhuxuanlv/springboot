@@ -5,7 +5,6 @@ server:
     context-path: /springboot
     session:
       timeout: 1800s
-  max-http-header-size: 1000KB
   tomcat:
     max-threads: 500
     max-connections: 10000
