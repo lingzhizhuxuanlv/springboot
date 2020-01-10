@@ -191,7 +191,7 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.7</version>
                 <configuration>
-                    <!-- 进度消息是否写入构建日志-->
+                    <!-- 进度消息是否写入构建日志 -->
                     <verbose>true</verbose>
                     <!-- 文件名重复是否覆盖 -->
                     <overwrite>true</overwrite>
